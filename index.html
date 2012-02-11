@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Quovolver - a simple jQuery plugin for revolving quotes</title>
+	<title>Quovolver - a simple jQuery plugin for revolving quotes</title>
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="http://sebnitu.com/baseDemo/bootstrap.js"></script>
@@ -454,6 +454,138 @@ $(document).ready(function() {
 				</div><!-- .panels -->
 
 			</div><!-- .demo -->
+			
+			<div class="sep"><span class="left-arrow arrow"></span><span class="right-arrow arrow"></span></div>
+			
+			<div class="options">
+				<div class="description">
+					<h2>Available Options</h2>
+					<p>You can pass options as key/value object to the quovolver() function or modify them at the bottom of jquery.quovolver.js file.</p>
+				</div><!-- .description -->
+				
+				<div class="table-wrap">
+					<table width="100%" class="options-table" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<th width="20%">Key</th>
+								<th width="18%">Default value</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>children</td>
+								<td>null</td>
+								<td>If selector is provided, we will use the find method to get the group of items, otherwise we'll grab the children of the selected element.</td>
+							</tr>
+							<tr>
+								<td>transition</td>
+								<td>'fade'</td>
+								<td>The style of the transition. Currently there are only two available options, fade and basic. More transitions will be added in the future or you can create your own by passing in your own function name. A JSON object will be passed to your function to work with.</td>
+							</tr>
+							<tr>
+								<td>transitionSpeed</td>
+								<td>300</td>
+								<td>This is the speed that each animation will take, not the entire transition. There may be multiple animations in any given transition but each animation will run at this set speed.</td>
+							</tr>
+							<tr>
+								<td>autoPlay</td>
+								<td>true</td>
+								<td>Toggle auto rotate.</td>
+							</tr>
+							<tr>
+								<td>autoPlaySpeed</td>
+								<td>6000</td>
+								<td>Duration before each transition. Time is in mili-seconds so 6000 ends up being 6 seconds.</td>
+							</tr>
+							<tr>
+								<td>pauseOnHover</td>
+								<td>true</td>
+								<td>Whether the auto play feature should pause when the object is hovered over. Auto rotate would resume when hovered off.</td>
+							</tr>
+							<tr>
+								<td>stopOnHover</td>
+								<td>false</td>
+								<td>Whether the auto play feature should stop when the object is hovered over.</td>
+							</tr>
+							<tr>
+								<td>equalHeight</td>
+								<td>true</td>
+								<td>Whether every item should have equal heights.</td>
+							</tr>
+							<tr>
+								<td>navPosition</td>
+								<td>'above'</td>
+								<td>Where the enabled navigation elements will be output. Can be set to 'above', 'below', 'both' or 'custom' (must provide custom selector for placement).</td>
+							</tr>
+							<tr>
+								<td>navPositionCustom</td>
+								<td>null</td>
+								<td>The selector of the custom element where the enabled navigation elements will be output.</td>
+							</tr>
+							<tr>
+								<td>navPrev</td>
+								<td>false</td>
+								<td>Toggle the "previous" button.</td>
+							</tr>
+							<tr>
+								<td>navNext</td>
+								<td>false</td>
+								<td>Toggle the "next" button.</td>
+							</tr>
+							<tr>
+								<td>navNum</td>
+								<td>false</td>
+								<td>Toggle numbered navigation. This outputs a "1, 2, 3, 4..." that links to their corresponding element.</td>
+							</tr>
+							<tr>
+								<td>navText</td>
+								<td>false</td>
+								<td>Toggle navigation description (e.g. display current item # and total item #).</td>
+							</tr>
+							<tr>
+								<td>navPrevText</td>
+								<td>'Prev'</td>
+								<td>Text for the "previous" button.</td>
+							</tr>
+							<tr>
+								<td>navNextText</td>
+								<td>'Next'</td>
+								<td>Text for the "next" button.</td>
+							</tr>
+							<tr>
+								<td>navTextContent</td>
+								<td>'@a / @b'</td>
+								<td>The text that will display for the navigation description. '@a' will be replaced with current item number and '@b' with total number.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div><!-- .table-wrap -->
+			</div><!-- .options -->
+			
+			<div class="options">
+				<div class="description">
+					<h2>Public Methods</h2>
+					<p>Quovolver's functions that you can play with. More coming soon.</p>
+				</div><!-- .description -->
+				
+				<div class="table-wrap">
+					<table width="100%" class="options-table" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<th width="20%">Method</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>$('elementWeCalledQuovolverOn').trigger('goto', itemNumber);</td>
+								<td>A public interface to move to transition to a specific item.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div><!-- .table-wrap -->
+			</div><!-- .options -->
 			
 		</div><!-- .page -->
 		
