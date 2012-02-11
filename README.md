@@ -14,19 +14,19 @@ Version 2.0 adds a lot more features than the first 1.0 version. Some of these f
 
 ## How do I use it?
 
-1. Firstly, include a copy of jQuery in your document. You can download your own copy of jQuery at [http://jquery.com](http://jquery.com) or link to the Google hosted script:
+1) Firstly, include a copy of jQuery in your document. You can download your own copy of jQuery at [http://jquery.com](http://jquery.com) or link to the Google hosted script:
 
 ```html
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 ```
 
-2. Download and include Quovolver in your document as well:
+2) Download and include Quovolver in your document as well:
 
 ```html
 <script src="jquery.quovolver.js"></script>
 ```
 
-3. Call the quovolver function in your document ready function:
+3) Call the quovolver function in your document ready function:
 
 ```javascript
 $(document).ready(function() {
@@ -34,7 +34,7 @@ $(document).ready(function() {
 });
 ```
 
-4. You can override the default settings by passing in parameters like this:
+4) You can override the default settings by passing in parameters like this:
 
 ```javascript
 $(document).ready(function() {
@@ -46,7 +46,7 @@ $(document).ready(function() {
 ```
 	 See the [documentation](https://github.com/sebnitu/Quovolver/wiki) for a full list of available options and their defaults.
    
-5. That's it, watch the quotes fly!
+5). That's it, watch the quotes fly!
 
 
 ## I can't figure out how this works. Is this thing broken?
