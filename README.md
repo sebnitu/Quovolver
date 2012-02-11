@@ -44,7 +44,7 @@ $(document).ready(function() {
   });
 });
 ```
-	 See the [documentation](https://github.com/sebnitu/Quovolver/wiki) for a full list of available options and their defaults.
+See the [documentation](https://github.com/sebnitu/Quovolver/wiki) for a full list of available options and their defaults.
    
 5). That's it, watch the quotes fly!
 
