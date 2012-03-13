@@ -1,5 +1,5 @@
 /*
- * jQuery Quovolver 2.0
+ * jQuery Quovolver 2.0.1
  * http://sandbox.sebnitu.com/jquery/quovolver
  *
  * By Sebastian Nitu - Copyright 2012 - All rights reserved

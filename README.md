@@ -1,4 +1,4 @@
-# Quovolver v2.0
+# Quovolver
 Quovolver is a jQuery plugin for revolving multiple testimonials or quotes in your document. Although, it can also be used to cycle through any group of elements.
 
 By Sebastian Nitu
