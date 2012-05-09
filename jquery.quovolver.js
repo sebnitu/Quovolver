@@ -1,5 +1,5 @@
 /*
- * jQuery Quovolver 2.0.1
+ * jQuery Quovolver 2.0.2
  * http://sandbox.sebnitu.com/jquery/quovolver
  *
  * By Sebastian Nitu - Copyright 2012 - All rights reserved
@@ -7,7 +7,7 @@
  */
 (function($) {
 	$.fn.quovolver = function(options) {
-
+				
 		// Extend our default options with those provided.
 		var opts = $.extend({}, $.fn.quovolver.defaults, options);
 
@@ -89,20 +89,20 @@
 				// Create the data object to pass to our transition method
 				var gotoData = {
 						current : $( $items[$active -1] ), // Save currently active item
-						upcoming : $( $items[itemNumber - 1] ), // Save upcoming item
+						upcoming : $( $items[itemNumber - 1] ) // Save upcoming item
 				}
 
 				// Save current and upcoming hights and outer heights
-				gotoData.currentHeight = getHiddenProperty(gotoData.current),
-				gotoData.upcomingHeight = getHiddenProperty(gotoData.upcoming),
-				gotoData.currentOuterHeight = getHiddenProperty(gotoData.current, 'outerHeight'),
-				gotoData.upcomingOuterHeight = getHiddenProperty(gotoData.upcoming, 'outerHeight')
+				gotoData.currentHeight = getHiddenProperty(gotoData.current);
+				gotoData.upcomingHeight = getHiddenProperty(gotoData.upcoming);
+				gotoData.currentOuterHeight = getHiddenProperty(gotoData.current, 'outerHeight');
+				gotoData.upcomingOuterHeight = getHiddenProperty(gotoData.upcoming, 'outerHeight');
 
 				// Save current and upcoming widths and outer widths
-				gotoData.currentWidth = getHiddenProperty(gotoData.current, 'width'),
-				gotoData.upcomingWidth = getHiddenProperty(gotoData.upcoming, 'width'),
-				gotoData.currentOuterWidth = getHiddenProperty(gotoData.current, 'outerWidth'),
-				gotoData.upcomingOuterWidth = getHiddenProperty(gotoData.upcoming, 'outerWidth')
+				gotoData.currentWidth = getHiddenProperty(gotoData.current, 'width');
+				gotoData.upcomingWidth = getHiddenProperty(gotoData.upcoming, 'width');
+				gotoData.currentOuterWidth = getHiddenProperty(gotoData.current, 'outerWidth');
+				gotoData.upcomingOuterWidth = getHiddenProperty(gotoData.upcoming, 'outerWidth');
 
 				// Transition method
 				if (o.transition != 'basic' && 
@@ -184,7 +184,7 @@
 				}
 
 				// Get the requested property
-				value = item[property]();
+				var value = item[property]();
 
 				// Check if item was hidden
 				if ( $(this).is(':hidden') ) {
