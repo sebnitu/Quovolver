@@ -1,12 +1,10 @@
 # Quovolver
 Quovolver is a jQuery plugin for revolving multiple testimonials or quotes in your document. Although, it can also be used to cycle through any group of elements.
 
-By Sebastian Nitu
+*By Sebastian Nitu*
 
-Plugin URI:	[https://github.com/sebnitu/Quovolver](https://github.com/sebnitu/Quovolver)
-
-Author URI:	[http://sebnitu.com/](http://sebnitu.com/)
-
+Plugin URI:	[https://github.com/sebnitu/Quovolver](https://github.com/sebnitu/Quovolver)  
+Author URI:	[http://sebnitu.com/](http://sebnitu.com/)  
 Online Demo: [http://sebnitu.github.com/Quovolver/](http://sebnitu.github.com/Quovolver/)
 
 ## Why use quovolver?
@@ -49,7 +47,7 @@ $(document).ready(function() {
 ```
 See the [documentation](https://github.com/sebnitu/Quovolver/wiki) for a full list of available options and their defaults.
    
-5). That's it, watch the quotes fly!
+5) That's it, watch the quotes fly!
 
 
 ## I can't figure out how this works. Is this thing broken?
