@@ -1,6 +1,6 @@
 /*
  * jQuery Quovolver 2.0.2
- * http://sandbox.sebnitu.com/jquery/quovolver
+ * https://github.com/sebnitu/Quovolver
  *
  * By Sebastian Nitu - Copyright 2012 - All rights reserved
  * Author URL: http://sebnitu.com
