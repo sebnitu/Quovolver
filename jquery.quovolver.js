@@ -1,4 +1,4 @@
-/*
+/**
  * jQuery Quovolver 2.0.2
  * https://github.com/sebnitu/Quovolver
  *
