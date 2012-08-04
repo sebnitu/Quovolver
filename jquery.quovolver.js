@@ -23,8 +23,8 @@
 
             // Initial styles and markup
             $this.addClass('quovolve')
-                     .css({ 'position' : 'relative' })
-                     .wrap('<div class="quovolve-box"></div>');
+                 .css({ 'position' : 'relative' })
+                 .wrap('<div class="quovolve-box"></div>');
 
             if( o.children ) {
                 var groupMethod = 'find';
