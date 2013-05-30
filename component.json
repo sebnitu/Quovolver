@@ -1,0 +1,8 @@
+{
+  "name": "quovolver",
+  "version": "2.0.2",
+  "main": "./jquery.quovolver.js",
+  "dependencies": {
+    "jquery": "~1.7.1"
+  }
+}
