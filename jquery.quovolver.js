@@ -5,79 +5,25 @@
  * By Sebastian Nitu - Copyright 2012 - All rights reserved
  * Author URL: http://sebnitu.com
  */
-(function($) {
+;(function ($) {
     $.fn.quovolver = function(options) {
-                
+        'use strict';
+        
         // Extend our default options with those provided.
         var opts = $.extend({}, $.fn.quovolver.defaults, options);
 
         // This allows for multiple instances of this plugin in the same document
         return this.each(function () {
 
-            // Save our object
-            var $this = $(this);
-
-            // Build element specific options
-            // This lets me access options with this syntax: o.optionName
-            var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
-
-            // Initial styles and markup
-            $this.addClass('quovolve')
-                 .css({ 'position' : 'relative' })
-                 .wrap('<div class="quovolve-box"></div>');
-
-            if( o.children ) {
-                var groupMethod = 'find';
-            } else {
-                var groupMethod = 'children';
-            }
-
-            // Initialize element specific variables
-            var $box = $this.parent('.quovolve-box'),
-                $items = $this[groupMethod](o.children),
-                $active = 1,
-                $total = $items.length;
-
-            // Hide all except the first
-            $items.hide().filter(':first').show();
-
-            // Call build navigation function
-            if ( o.navPrev || o.navNext || o.navNum || o.navText ) {
-                o.navEnabled = true;
-                var $nav = buildNav();
-            } else {
-                o.navEnabled = false;
-            }
-
-            // Call equal heights function
-            if (o.equalHeight) {
-                equalHeight( $items );
-                // Recalculate equal heights on window resize
-                $(window).resize(function() {
-                    equalHeight( $items );
-                    $this.css('height', $($items[$active -1]).outerHeight() );
-                });
-            }
-
-            // Auto play interface
-            if (o.autoPlay) {
-                var $playID = autoPlay();
-                if (o.stopOnHover) {
-                    var $playID = stopAutoPlay($playID);
-                } else if (o.pauseOnHover) {
-                    var $playID = pauseAutoPlay($playID);
-                }
-            }
-
             // Go To function
             function gotoItem(itemNumber) {
 
                 // Check if stuff is already being animated and kill the script if it is
-                if( $items.is(':animated') || $this.is(':animated') ) return false;
+                if( $items.is(':animated') || $this.is(':animated') ) { return false; }
                 // If the container has been hidden, kill the script
                 // This prevents the script from bugging out if something hides the revolving
                 // object from another script (tabs for example)
-                if( $box.is(':hidden') ) return false;
+                if( $box.is(':hidden') ) { return false; }
 
                 // Don't let itemNumber go above or below possible options
                 if ( itemNumber < 1 ) {
@@ -90,7 +36,7 @@
                 var gotoData = {
                         current : $( $items[$active -1] ), // Save currently active item
                         upcoming : $( $items[itemNumber - 1] ) // Save upcoming item
-                }
+                };
 
                 // Save current and upcoming hights and outer heights
                 gotoData.currentHeight = getHiddenProperty(gotoData.current);
@@ -105,9 +51,9 @@
                 gotoData.upcomingOuterWidth = getHiddenProperty(gotoData.upcoming, 'outerWidth');
 
                 // Transition method
-                if (o.transition != 'basic' &&
-                    typeof o.transition == 'string' &&
-                    eval('typeof ' + o.transition) == 'function' ) {
+                if (o.transition !== 'basic' &&
+                    typeof o.transition === 'string' &&
+                    eval('typeof ' + o.transition) === 'function' ) {
                     // Run the passed method
                     eval( o.transition + '(gotoData)' );
                 } else {
@@ -129,20 +75,21 @@
             // Build navigation
             function buildNav() {
                 // Check the position of the nav and insert container
+                var nav;
                 if ( o.navPosition === 'above' || o.navPosition === 'both' ) {
                     $box.prepend('<div class="quovolve-nav quovolve-nav-above"></div>');
-                    var nav = $box.find('.quovolve-nav');
-                } 
+                    nav = $box.find('.quovolve-nav');
+                }
                 if ( o.navPosition === 'below' || o.navPosition === 'both' ) {
                     $box.append('<div class="quovolve-nav quovolve-nav-below"></div>');
-                    var nav = $box.find('.quovolve-nav');
-                } 
+                    nav = $box.find('.quovolve-nav');
+                }
                 if ( o.navPosition === 'custom' ) {
                     if ( o.navPositionCustom !== '' && $( o.navPositionCustom ).length !== 0 ) {
                         $( o.navPositionCustom ).append('<div class="quovolve-nav quovolve-nav-custom"></div>');
-                        var nav = $( o.navPositionCustom ).find('.quovolve-nav');
+                        nav = $( o.navPositionCustom ).find('.quovolve-nav');
                     } else {
-                        console.log('Error', 'That custom selector did not return an element.');
+                        // console.log('Error', 'That custom selector did not return an element.');
                     }
                 }
 
@@ -175,7 +122,7 @@
             // Get height of a hidden element
             function getHiddenProperty(item, property) {
                 // Default method
-                if (!property) property = 'height';
+                if (!property) { property = 'height'; }
 
                 // Check if item was hidden
                 if ( $(this).is(':hidden') ) {
@@ -200,10 +147,11 @@
                 var tallest = 0;
                 group.height('auto');
                 group.each(function() {
+                    var thisHeight;
                     if ( $(this).is(':visible') ) {
-                        var thisHeight = $(this).height();
+                        thisHeight = $(this).height();
                     } else {
-                        var thisHeight = getHiddenProperty( $(this) );
+                        thisHeight = getHiddenProperty( $(this) );
                     }
                     if(thisHeight > tallest) {
                         tallest = thisHeight;
@@ -234,7 +182,7 @@
             // Start auto play
             function autoPlay() {
                 $box.addClass('play');
-                intervalID = setInterval(function() {
+                var intervalID = setInterval(function() {
                     gotoItem( $active + 1 );
                 }, o.autoPlaySpeed);
                 return intervalID;
@@ -295,6 +243,62 @@
                     });
                 });
 
+            }
+
+            // Save our object
+            var $this = $(this);
+
+            // Build element specific options
+            // This lets me access options with this syntax: o.optionName
+            var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
+
+            // Initial styles and markup
+            $this.addClass('quovolve')
+                 .css({ 'position' : 'relative' })
+                 .wrap('<div class="quovolve-box"></div>');
+
+            var groupMethod;
+            if( o.children ) {
+                groupMethod = 'find';
+            } else {
+                groupMethod = 'children';
+            }
+
+            // Initialize element specific variables
+            var $box = $this.parent('.quovolve-box'),
+                $items = $this[groupMethod](o.children),
+                $active = 1,
+                $total = $items.length;
+
+            // Hide all except the first
+            $items.hide().filter(':first').show();
+
+            // Call build navigation function
+            if ( o.navPrev || o.navNext || o.navNum || o.navText ) {
+                o.navEnabled = true;
+                var $nav = buildNav();
+            } else {
+                o.navEnabled = false;
+            }
+
+            // Call equal heights function
+            if (o.equalHeight) {
+                equalHeight( $items );
+                // Recalculate equal heights on window resize
+                $(window).resize(function() {
+                    equalHeight( $items );
+                    $this.css('height', $($items[$active -1]).outerHeight() );
+                });
+            }
+
+            // Auto play interface
+            if (o.autoPlay) {
+                var $playID = autoPlay();
+                if (o.stopOnHover) {
+                    $playID = stopAutoPlay($playID);
+                } else if (o.pauseOnHover) {
+                    $playID = pauseAutoPlay($playID);
+                }
             }
 
             // Bind to the forward and back buttons
