@@ -36,10 +36,3 @@
 Icon?
 ehthumbs.db
 Thumbs.db
-
-# Directories #
-###############
-assets/fonts/glyphicons/
-assets/fonts/glyphicons/*
-assets/fonts/glyphicons-halflings/
-assets/fonts/glyphicons-halflings/*
