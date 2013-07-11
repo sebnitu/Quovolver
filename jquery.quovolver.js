@@ -182,7 +182,6 @@
             // Start auto play
             function autoPlay() {
                 var intervalSpeed = (o.autoPlaySpeed == 'auto' ? $items[$active-1].textLength*20 + 3000 : o.autoPlaySpeed);
-                //alert('intervalID: '+$intervalID + '\nslide #: ' + $active + '\ntext length: ' + $items[$active-1].textLength + '\ndelay: ' + intervalSpeed + '\ntext: ' + $($items[$active-1]).text());
                 $box.addClass('play');
                 clearTimeout($intervalID);
                 $intervalID = setTimeout(function() {
