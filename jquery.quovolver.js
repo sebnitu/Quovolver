@@ -135,7 +135,7 @@
 
                 // Check if item was hidden
                 if ( $(this).is(':hidden') ) {
-                    // Return the originally hidden item to it's original state
+                    // Return the originally hidden item to its original state
                     item.hide().css({'position':'static', 'visibility':'visible', 'display':'none'});
                 }
                 // Return the height
@@ -181,35 +181,36 @@
 
             // Start auto play
             function autoPlay() {
+                var intervalSpeed = (o.autoPlaySpeed == 'auto' ? $items[$active-1].textLength*20 + 3000 : o.autoPlaySpeed);
+                //alert('intervalID: '+$intervalID + '\nslide #: ' + $active + '\ntext length: ' + $items[$active-1].textLength + '\ndelay: ' + intervalSpeed + '\ntext: ' + $($items[$active-1]).text());
                 $box.addClass('play');
-                var intervalID = setInterval(function() {
+                clearTimeout($intervalID);
+                $intervalID = setTimeout(function() {
                     gotoItem( $active + 1 );
-                }, o.autoPlaySpeed);
-                return intervalID;
+                    autoPlay();
+                }, intervalSpeed);
             }
 
             // Pause auto play
-            function pauseAutoPlay(intervalID) {
+            function pauseAutoPlay() {
                 if ( o.stopAutoPlay !== true ) {
                     $box.hover(function() {
                         $box.addClass('pause').removeClass('play');
-                        clearInterval(intervalID);
+                        clearTimeout($intervalID);
                     }, function() {
                         $box.removeClass('pause').addClass('play');
-                        clearInterval(intervalID);
-                        intervalID = autoPlay();
+                        clearTimeout($intervalID);
+                        autoPlay();
                     });
-                    return intervalID;
                 }
             }
 
             // Stop auto play
-            function stopAutoPlay(intervalID) {
+            function stopAutoPlay() {
                 $box.hover(function() {
                     $box.addClass('stop').removeClass('play');
-                    clearInterval(intervalID);
+                    clearTimeout($intervalID);
                 }, function() {});
-                return intervalID;
             }
 
             // Transition Effects
@@ -293,11 +294,18 @@
 
             // Auto play interface
             if (o.autoPlay) {
-                var $playID = autoPlay();
+                  if (o.autoPlaySpeed == 'auto') {
+									// get and store # of chars in each quote
+	                $items.each(function() {
+	                  this.textLength = $(this).text().length;
+	                });
+								}
+                var $intervalID;
+                autoPlay();
                 if (o.stopOnHover) {
-                    $playID = stopAutoPlay($playID);
+                    stopAutoPlay();
                 } else if (o.pauseOnHover) {
-                    $playID = pauseAutoPlay($playID);
+                    pauseAutoPlay();
                 }
             }
 
@@ -331,7 +339,7 @@
         transitionSpeed : 300, // This is the speed that each animation will take, not the entire transition
 
         autoPlay : true, // Toggle auto rotate
-        autoPlaySpeed : 6000, // Duration before each transition
+        autoPlaySpeed : 'auto', // Duration before each transition: either milliseconds or 'auto' to determine by quote length
         pauseOnHover : true, // Should the auto rotate pause on hover
         stopOnHover : false, // Should the auto rotate stop on hover (and not continue after hover)
         equalHeight : true, // Should every item have equal heights
