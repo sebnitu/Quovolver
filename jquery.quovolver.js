@@ -302,15 +302,15 @@
             }
 
             // Bind to the forward and back buttons
-            $('.nav-prev a').click(function () {
+            $('.nav-prev a',$box).click(function () {
                 return gotoItem( $active - 1 );
             });
-            $('.nav-next a').click(function () {
+            $('.nav-next a',$box).click(function () {
                 return gotoItem( $active + 1 );
             });
 
             // Bind the numbered navigation buttons
-            $('.nav-numbers a').click(function() {
+            $('.nav-numbers a',$box).click(function() {
                 return gotoItem( $(this).text() );
             });
 
