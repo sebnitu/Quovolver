@@ -34,8 +34,8 @@
 
                 // Create the data object to pass to our transition method
                 var gotoData = {
-                    current : $( $items[$active -1] ), // Save currently active item
-                    upcoming : $( $items[itemNumber - 1] ) // Save upcoming item
+                        current : $( $items[$active -1] ), // Save currently active item
+                        upcoming : $( $items[itemNumber - 1] ) // Save upcoming item
                 };
 
                 // Save current and upcoming hights and outer heights
@@ -132,7 +132,7 @@
                         this.oDisplay = this.style.display;
                         $(this).show();
                     });
-                    // Get the requested property
+                    // Get the property again
                     var value = item[property]();
                     // revert visibility of elements
                     elements.each(function() {
@@ -234,6 +234,7 @@
 
             // Fade animation
             function fade(data) {
+
                 // Set container to current item's height
                 $this.height(data.currentOuterHeight);
 
@@ -301,12 +302,12 @@
 
             // Auto play interface
             if (o.autoPlay) {
-                if (o.autoPlaySpeed == 'auto') {
-                  // get and store # of chars in each quote
-                  $items.each(function() {
-                    this.textLength = $(this).text().length;
-                  });
-                }
+                  if (o.autoPlaySpeed == 'auto') {
+    								// get and store # of chars in each quote
+	                $items.each(function() {
+	                  this.textLength = $(this).text().length;
+	                });
+								}
                 var $intervalID;
                 autoPlay();
                 if (o.stopOnHover) {
@@ -336,7 +337,7 @@
             $(this).bind('goto', function (event, item) {
                 goToAndPlay( item );
             });
-            
+
         }); // @end of return this.each()
 
     };
@@ -345,7 +346,7 @@
 
         children : '', // If selector is provided, we will use the find method to get the group of items
 
-        transition : 'fade', // The style of the transition: fade or basic
+        transition : 'fade', // The style of the transition
         transitionSpeed : 300, // This is the speed that each animation will take, not the entire transition
 
         autoPlay : true, // Toggle auto rotate
