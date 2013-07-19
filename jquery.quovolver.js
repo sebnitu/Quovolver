@@ -39,8 +39,8 @@
                 };
 
                 // Save current and upcoming hights and outer heights
-                gotoData.currentHeight = getHiddenProperty(gotoData.current);
-                gotoData.upcomingHeight = getHiddenProperty(gotoData.upcoming);
+                gotoData.currentHeight = getHiddenProperty(gotoData.current, 'height');
+                gotoData.upcomingHeight = getHiddenProperty(gotoData.upcoming, 'height');
                 gotoData.currentOuterHeight = getHiddenProperty(gotoData.current, 'outerHeight');
                 gotoData.upcomingOuterHeight = getHiddenProperty(gotoData.upcoming, 'outerHeight');
 
@@ -121,24 +121,25 @@
 
             // Get height of a hidden element
             function getHiddenProperty(item, property) {
-                // Default method
-                if (!property) { property = 'height'; }
-
-                // Check if item was hidden
-                if ( $(this).is(':hidden') ) {
-                    // Reveal the hidden item but not to the user
-                    item.show().css({'position':'absolute', 'visibility':'hidden', 'display':'block'});
-                }
-
                 // Get the requested property
                 var value = item[property]();
-
-                // Check if item was hidden
-                if ( $(this).is(':hidden') ) {
-                    // Return the originally hidden item to its original state
-                    item.hide().css({'position':'static', 'visibility':'visible', 'display':'none'});
+                // if no value, it's probably because this element and/or a parent element is hidden
+                if (!value || value == 0) {
+                    // walk up the DOM and show all elements momentarily
+                    var elements = item.parents().andSelf().filter(':hidden');
+                    // store current display
+                    elements.each(function() {
+                        this.oDisplay = this.style.display;
+                        $(this).show();
+                    });
+                    // Get the property again
+                    var value = item[property]();
+                    // revert visibility of elements
+                    elements.each(function() {
+                        this.style.display = this.oDisplay;
+                    });
                 }
-                // Return the height
+                // Return the value
                 return value;
             }
 
@@ -151,7 +152,7 @@
                     if ( $(this).is(':visible') ) {
                         thisHeight = $(this).height();
                     } else {
-                        thisHeight = getHiddenProperty( $(this) );
+                        thisHeight = getHiddenProperty( $(this), 'height' );
                     }
                     if(thisHeight > tallest) {
                         tallest = thisHeight;
@@ -181,7 +182,7 @@
 
             // Start auto play
             function autoPlay() {
-                var intervalSpeed = (o.autoPlaySpeed == 'auto' ? $items[$active-1].textLength*20 + 3000 : o.autoPlaySpeed);
+                var intervalSpeed = (o.autoPlaySpeed == 'auto' ? $items[$active-1].textLength*25 + 2000 : o.autoPlaySpeed);
                 $box.addClass('play');
                 clearTimeout($intervalID);
                 $intervalID = setTimeout(function() {
@@ -210,6 +211,14 @@
                     $box.addClass('stop').removeClass('play');
                     clearTimeout($intervalID);
                 }, function() {});
+            }
+
+            function goToAndPlay(itemNumber) {
+                clearTimeout($intervalID);
+                gotoItem(itemNumber);
+                if (o.autoPlay) { 
+                    autoPlay();
+                }
             }
 
             // Transition Effects
@@ -294,7 +303,7 @@
             // Auto play interface
             if (o.autoPlay) {
                   if (o.autoPlaySpeed == 'auto') {
-									// get and store # of chars in each quote
+    								// get and store # of chars in each quote
 	                $items.each(function() {
 	                  this.textLength = $(this).text().length;
 	                });
@@ -310,20 +319,23 @@
 
             // Bind to the forward and back buttons
             $('.nav-prev a',$box).click(function () {
-                return gotoItem( $active - 1 );
+                goToAndPlay( $active - 1 );
+                return false;
             });
             $('.nav-next a',$box).click(function () {
-                return gotoItem( $active + 1 );
+                goToAndPlay( $active + 1 );
+                return false;
             });
 
             // Bind the numbered navigation buttons
             $('.nav-numbers a',$box).click(function() {
-                return gotoItem( $(this).text() );
+                goToAndPlay( $(this).text() );
+                return false;
             });
 
             // Create a public interface to move to a specific item
             $(this).bind('goto', function (event, item) {
-                gotoItem( item );
+                goToAndPlay( item );
             });
 
         }); // @end of return this.each()
