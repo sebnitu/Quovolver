@@ -60,4 +60,4 @@ Using Quovolver in your project? Let me know! Shoot me a link of where you're us
 
 ## License
 
-Quovolver is built and maintained by [Sebastian Nitu](http://sebnitu.com/) and is licensed under the MIT License (MIT). Follow me on [Twitter](https://twitter.com/sebnitu), [GitHub](https://github.com/sebnitu) and [Dribbble](http://dribbble.com/sebnitu).
+[Quovolver](https://github.com/sebnitu/Quovolver) is built and maintained by [Sebastian Nitu](http://sebnitu.com/) and is licensed under the MIT License (MIT). Follow me on [Twitter](https://twitter.com/sebnitu), [GitHub](https://github.com/sebnitu) and [Dribbble](http://dribbble.com/sebnitu).
