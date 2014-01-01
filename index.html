@@ -1,233 +1,233 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Quovolver - a simple jQuery plugin for revolving quotes</title>
-    
-    <!-- Include jQuery -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-    
-    <!-- 
-    Include BaseDemo
-    
-    BaseDemo is a code demoing tool for displaying demos the easiest way possible
-    It is not required for the demo to work and should not be included in your
-    implementation of the demoed code on your projects.
-    
-    For more on BaseDemo here: https://github.com/sebnitu/BaseDemo
-    -->
-    <script src="http://sebnitu.com/BaseDemo/bootstrap.js"></script>
-    
-    <!-- Demo Plugin -->
-    <script src="jquery.quovolver.min.js"></script>
-    
-    <!-- CSS Test Zone -->
-    <style>
-    /**
-     * Item Styles
-     */
-    .quovolve {
-        margin: 20px 0;
-    }
-    .quovolve blockquote {
-        margin: 0;
-    }
-    .quovolve blockquote p {
-        margin: 10px 0;
-    }
-    .quotes ul {
-        list-style: none;
-    }
+  <title>Quovolver - a simple jQuery plugin for revolving quotes</title>
+  
+  <!-- Include jQuery -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+  
+  <!-- 
+  Include BaseDemo
+  
+  BaseDemo is a code demoing tool for displaying demos the easiest way possible
+  It is not required for the demo to work and should not be included in your
+  implementation of the demoed code on your projects.
+  
+  For more on BaseDemo here: https://github.com/sebnitu/BaseDemo
+  -->
+  <script src="http://sebnitu.com/BaseDemo/bootstrap.js"></script>
+  
+  <!-- Demo Plugin -->
+  <script src="jquery.quovolver.min.js"></script>
+  
+  <!-- CSS Test Zone -->
+  <style>
+  /**
+   * Item Styles
+   */
+  .quovolve {
+    margin: 20px 0;
+  }
+  .quovolve blockquote {
+    margin: 0;
+  }
+  .quovolve blockquote p {
+    margin: 10px 0;
+  }
+  .quotes ul {
+    list-style: none;
+  }
 
-    /**
-     * General Navigation Styles
-     */
-    .quovolve-nav:before, .quovolve-nav:after {
-        content: "\0020"; display: block; height: 0; visibility: hidden;    
-    } 
-    .quovolve-nav:after { clear: both; }
-    .quovolve-nav {
-        margin: 20px 0;
-        line-height: 30px;
-        zoom: 1;
-    }
-    .quovolve-nav span {
-        float: left;
-        margin-right: 5px;
-    }
-    .quovolve-nav a {
-        background: #aaa;
-        line-height: 20px;
-        color: #fff;
-        display: block;
-        padding: 5px 15px;
-        border: 0 none;
-        text-align: center;
-        /* Border Radius */
-        -webkit-border-radius: 15px;
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-        /* Box Shadow */
-        -moz-box-shadow: inset 0 1px 2px rgba(0,0,0, 0.15);
-        -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0, 0.15);
-        box-shadow: inset 0 1px 2px rgba(0,0,0, 0.15);
-    }
-    .quovolve-nav a:hover {
-        background: #dd390d;
-    }
+  /**
+   * General Navigation Styles
+   */
+  .quovolve-nav:before, .quovolve-nav:after {
+    content: "\0020"; display: block; height: 0; visibility: hidden;
+  } 
+  .quovolve-nav:after { clear: both; }
+  .quovolve-nav {
+    margin: 20px 0;
+    line-height: 30px;
+    zoom: 1;
+  }
+  .quovolve-nav span {
+    float: left;
+    margin-right: 5px;
+  }
+  .quovolve-nav a {
+    background: #aaa;
+    line-height: 20px;
+    color: #fff;
+    display: block;
+    padding: 5px 15px;
+    border: 0 none;
+    text-align: center;
+    /* Border Radius */
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    /* Box Shadow */
+    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0, 0.15);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0, 0.15);
+    box-shadow: inset 0 1px 2px rgba(0,0,0, 0.15);
+  }
+  .quovolve-nav a:hover {
+    background: #dd390d;
+  }
 
-    /**
-     * Numbered Navigation
-     */
-    .nav-numbers {
-        list-style: none; margin: 0;
-        float: right;
-    }
-    .nav-numbers li {
-        float: left;
-        margin: 0 0 0 5px;
-    }
-    .nav-numbers li a {
-        padding-left: 0; padding-right: 0;
-        width: 30px;
-    }
-    .nav-numbers li.active a, .nav-numbers li a:hover {
-        background: #dd390d;
-    }
+  /**
+   * Numbered Navigation
+   */
+  .nav-numbers {
+    list-style: none; margin: 0;
+    float: right;
+  }
+  .nav-numbers li {
+    float: left;
+    margin: 0 0 0 5px;
+  }
+  .nav-numbers li a {
+    padding-left: 0; padding-right: 0;
+    width: 30px;
+  }
+  .nav-numbers li.active a, .nav-numbers li a:hover {
+    background: #dd390d;
+  }
 
-    /**
-     * Navigation Description
-     */
-    .nav-text {
-        margin-left: 30px;
-        color: #aaa;
-    }
-    </style>
+  /**
+   * Navigation Description
+   */
+  .nav-text {
+    margin-left: 30px;
+    color: #aaa;
+  }
+  </style>
+  
+  <!-- JavaScript Test Zone -->
+  <script>
+  $(document).ready(function() {
     
-    <!-- JavaScript Test Zone -->
-    <script>
-    $(document).ready(function() {
-        
-        // Example One
-        $('#demo-one .quotes').quovolver();
-        
-        // Example Two
-        $('#demo-two .quotes').quovolver({
-            children : 'li',
-            transitionSpeed : 600,
-            autoPlay : false,
-            equalHeight : false,
-            navPosition : 'above',
-            navPrev         : true,
-            navNext         : true,
-            navNum          : true,
-            navText         : true,
-            navTextContent : 'Quote @a of @b'
-        });
-        
+    // Example One
+    $('#demo-one .quotes').quovolver();
+    
+    // Example Two
+    $('#demo-two .quotes').quovolver({
+      children : 'li',
+      transitionSpeed : 600,
+      autoPlay : false,
+      equalHeight : false,
+      navPosition : 'above',
+      navPrev     : true,
+      navNext     : true,
+      navNum      : true,
+      navText     : true,
+      navTextContent : 'Quote @a of @b'
     });
-    </script>
     
+  });
+  </script>
+  
 </head>
 <body>
 
-    <div class="wrapper">
-        <div class="page">
-        
-            <nav class="nav">
-                <ul>
-                    <li><a href="http://sebnitu.com">About the Author</a></li>
-                    <li><a href="https://github.com/sebnitu/Quovolver/">Documentation</a></li>
-                    <li class="download"><a href="https://github.com/sebnitu/Quovolver/zipball/master">Download</a></li>
-                </ul>
-            </nav>
-        
-            <header class="header">
-                <h1>Quovolver</h1>
-                <p>Quovolver is a jQuery plugin for revolving multiple testimonials or quotes in your document. Although, it can also be used to cycle through any group of elements.<p>
-                <div class="custom-nav"></div>
-            </header>
+  <div class="wrapper">
+    <div class="page">
+    
+      <nav class="nav">
+        <ul>
+          <li><a href="http://sebnitu.com">About the Author</a></li>
+          <li><a href="https://github.com/sebnitu/Quovolver/">Documentation</a></li>
+          <li class="download"><a href="https://github.com/sebnitu/Quovolver/zipball/master">Download</a></li>
+        </ul>
+      </nav>
+    
+      <header class="header">
+        <h1>Quovolver</h1>
+        <p>Quovolver is a jQuery plugin for revolving multiple testimonials or quotes in your document. Although, it can also be used to cycle through any group of elements.<p>
+        <div class="custom-nav"></div>
+      </header>
+      
+      <div class="sep"><span class="left-arrow arrow"></span><span class="right-arrow arrow"></span></div>
+      
+      <div class="demo" id="demo-one">
+        <div class="description">
+          <h2>Example One</h2>
+          <p>This is the most basic usage of Quovolver with the default settings being used. See the full documentation for details on all available parameters.</p>
+        </div><!-- .description -->
+
+        <nav class="subnav tabs">
+          <ul>
+            <li class="active"><a href="#panel-1">Demo</a></li>
+            <li><a href="#panel-2">JavaScript</a></li>
+            <li><a href="#panel-3">HTML</a></li>
+            <li><a href="#panel-4">CSS</a></li>
+          </ul>
+        </nav>
+        <div class="panels">
+          <div class="panel" id="panel-1">
             
-            <div class="sep"><span class="left-arrow arrow"></span><span class="right-arrow arrow"></span></div>
+            <div class="quotes">
+              <blockquote>
+                <p>&ldquo;That which can be asserted without evidence, can be dismissed without evidence.&rdquo;</p>
+                <p>&mdash; Christopher Hitchens (Quote 1)</p>
+              </blockquote>
+
+              <blockquote>
+                <p>&ldquo;Owners of dogs will have noticed that, if you provide them with food and water and shelter and affection, they will think you are god. Whereas owners of cats are compelled to realize that, if you provide them with food and water and shelter and affection, they draw the conclusion that they are gods.&rdquo;</p>
+                <p>&mdash; Christopher Hitchens (Quote 2)</p>
+              </blockquote>
+
+              <blockquote>
+                <p>&ldquo;Everybody does have a book in them, but in most cases that's where it should stay.&rdquo;</p>
+                <p>&mdash; Christopher Hitchens (Quote 3)</p>
+              </blockquote>
+
+              <blockquote>
+                <p>&ldquo;Beware the irrational, however seductive. Shun the 'transcendent' and all who invite you to subordinate or annihilate yourself. Distrust compassion; prefer dignity for yourself and others. Don't be afraid to be thought arrogant or selfish. Picture all experts as if they were mammals. Never be a spectator of unfairness or stupidity. Seek out argument and disputation for their own sake; the grave will supply plenty of time for silence. Suspect your own motives, and all excuses. Do not live for others any more than you would expect others to live for you.&rdquo;</p>
+                <p>&mdash; Christopher Hitchens (Quote 4)</p>
+              </blockquote>
+
+              <blockquote>
+              <p>&ldquo;Human decency is not derived from religion. It precedes it.&rdquo;</p>
+              <p>&mdash; Christopher Hitchens (Quote 5)</p>
+              </blockquote>
+
+              <blockquote>
+                <p>&ldquo;Many religions now come before us with ingratiating smirks and outspread hands, like an unctuous merchant in a bazaar. They offer consolation and solidarity and uplift, competing as they do in a marketplace. But we have a right to remember how barbarically they behaved when they were strong and were making an offer that people could not refuse.&rdquo;</p>
+                <p>&mdash; Christopher Hitchens (Quote 6)</p>
+              </blockquote>
+            </div><!-- .quotes -->
             
-            <div class="demo" id="demo-one">
-                <div class="description">
-                    <h2>Example One</h2>
-                    <p>This is the most basic usage of Quovolver with the default settings being used. See the full documentation for details on all available parameters.</p>
-                </div><!-- .description -->
+          </div><!-- .panel -->
 
-                <nav class="subnav tabs">
-                    <ul>
-                        <li class="active"><a href="#panel-1">Demo</a></li>
-                        <li><a href="#panel-2">JavaScript</a></li>
-                        <li><a href="#panel-3">HTML</a></li>
-                        <li><a href="#panel-4">CSS</a></li>
-                    </ul>
-                </nav>
-                <div class="panels">
-                    <div class="panel" id="panel-1">
-                        
-                        <div class="quotes">
-                            <blockquote>
-                                <p>&ldquo;That which can be asserted without evidence, can be dismissed without evidence.&rdquo;</p>
-                                <p>&mdash; Christopher Hitchens (Quote 1)</p>
-                            </blockquote>
-
-                            <blockquote>
-                                <p>&ldquo;Owners of dogs will have noticed that, if you provide them with food and water and shelter and affection, they will think you are god. Whereas owners of cats are compelled to realize that, if you provide them with food and water and shelter and affection, they draw the conclusion that they are gods.&rdquo;</p>
-                                <p>&mdash; Christopher Hitchens (Quote 2)</p>
-                            </blockquote>
-
-                            <blockquote>
-                                <p>&ldquo;Everybody does have a book in them, but in most cases that's where it should stay.&rdquo;</p>
-                                <p>&mdash; Christopher Hitchens (Quote 3)</p>
-                            </blockquote>
-
-                            <blockquote>
-                                <p>&ldquo;Beware the irrational, however seductive. Shun the 'transcendent' and all who invite you to subordinate or annihilate yourself. Distrust compassion; prefer dignity for yourself and others. Don't be afraid to be thought arrogant or selfish. Picture all experts as if they were mammals. Never be a spectator of unfairness or stupidity. Seek out argument and disputation for their own sake; the grave will supply plenty of time for silence. Suspect your own motives, and all excuses. Do not live for others any more than you would expect others to live for you.&rdquo;</p>
-                                <p>&mdash; Christopher Hitchens (Quote 4)</p>
-                            </blockquote>
-
-                            <blockquote>
-                            <p>&ldquo;Human decency is not derived from religion. It precedes it.&rdquo;</p>
-                            <p>&mdash; Christopher Hitchens (Quote 5)</p>
-                            </blockquote>
-
-                            <blockquote>
-                                <p>&ldquo;Many religions now come before us with ingratiating smirks and outspread hands, like an unctuous merchant in a bazaar. They offer consolation and solidarity and uplift, competing as they do in a marketplace. But we have a right to remember how barbarically they behaved when they were strong and were making an offer that people could not refuse.&rdquo;</p>
-                                <p>&mdash; Christopher Hitchens (Quote 6)</p>
-                            </blockquote>
-                        </div><!-- .quotes -->
-                        
-                    </div><!-- .panel -->
-
-                    <div class="panel" id="panel-2">
+          <div class="panel" id="panel-2">
 <pre>// When document is ready...
 $(document).ready(function() {
   // Call Quovolver on the '.quotes' object
   $('#demo-one .quotes').quovolver();
 });</pre>
-                    </div><!-- .panel -->
+          </div><!-- .panel -->
 
-                    <div class="panel" id="panel-3">
+          <div class="panel" id="panel-3">
 <pre>&lt;div class=&quot;quotes&quot;&gt;
   &lt;blockquote&gt;
-    &lt;p&gt;&ldquo;That which can be asserted without evidence, can be dismissed without evidence.&rdquo;&lt;/p&gt;
-    &lt;p&gt;&mdash; Christopher Hitchens (Quote 1)&lt;/p&gt;
+  &lt;p&gt;&ldquo;That which can be asserted without evidence, can be dismissed without evidence.&rdquo;&lt;/p&gt;
+  &lt;p&gt;&mdash; Christopher Hitchens (Quote 1)&lt;/p&gt;
   &lt;/blockquote&gt;
 
   &lt;blockquote&gt;
-    &lt;p&gt;&ldquo;Owners of dogs will have noticed that, if you provide them with food and water and shelter and affection, they will think you are god. Whereas owners of cats are compelled to realize that, if you provide them with food and water and shelter and affection, they draw the conclusion that they are gods.&rdquo;&lt;/p&gt;
-    &lt;p&gt;&mdash; Christopher Hitchens (Quote 2)&lt;/p&gt;
+  &lt;p&gt;&ldquo;Owners of dogs will have noticed that, if you provide them with food and water and shelter and affection, they will think you are god. Whereas owners of cats are compelled to realize that, if you provide them with food and water and shelter and affection, they draw the conclusion that they are gods.&rdquo;&lt;/p&gt;
+  &lt;p&gt;&mdash; Christopher Hitchens (Quote 2)&lt;/p&gt;
   &lt;/blockquote&gt;
 
   &lt;blockquote&gt;
-    &lt;p&gt;&ldquo;Everybody does have a book in them, but in most cases that's where it should stay.&rdquo;&lt;/p&gt;
-    &lt;p&gt;&mdash; Christopher Hitchens (Quote 3)&lt;/p&gt;
+  &lt;p&gt;&ldquo;Everybody does have a book in them, but in most cases that's where it should stay.&rdquo;&lt;/p&gt;
+  &lt;p&gt;&mdash; Christopher Hitchens (Quote 3)&lt;/p&gt;
   &lt;/blockquote&gt;
 
   &lt;blockquote&gt;
-    &lt;p&gt;&ldquo;Beware the irrational, however seductive. Shun the 'transcendent' and all who invite you to subordinate or annihilate yourself. Distrust compassion; prefer dignity for yourself and others. Don't be afraid to be thought arrogant or selfish. Picture all experts as if they were mammals. Never be a spectator of unfairness or stupidity. Seek out argument and disputation for their own sake; the grave will supply plenty of time for silence. Suspect your own motives, and all excuses. Do not live for others any more than you would expect others to live for you.&rdquo;&lt;/p&gt;
-    &lt;p&gt;&mdash; Christopher Hitchens (Quote 4)&lt;/p&gt;
+  &lt;p&gt;&ldquo;Beware the irrational, however seductive. Shun the 'transcendent' and all who invite you to subordinate or annihilate yourself. Distrust compassion; prefer dignity for yourself and others. Don't be afraid to be thought arrogant or selfish. Picture all experts as if they were mammals. Never be a spectator of unfairness or stupidity. Seek out argument and disputation for their own sake; the grave will supply plenty of time for silence. Suspect your own motives, and all excuses. Do not live for others any more than you would expect others to live for you.&rdquo;&lt;/p&gt;
+  &lt;p&gt;&mdash; Christopher Hitchens (Quote 4)&lt;/p&gt;
   &lt;/blockquote&gt;
 
   &lt;blockquote&gt;
@@ -236,157 +236,157 @@ $(document).ready(function() {
   &lt;/blockquote&gt;
 
   &lt;blockquote&gt;
-    &lt;p&gt;&ldquo;Many religions now come before us with ingratiating smirks and outspread hands, like an unctuous merchant in a bazaar. They offer consolation and solidarity and uplift, competing as they do in a marketplace. But we have a right to remember how barbarically they behaved when they were strong and were making an offer that people could not refuse.&rdquo;&lt;/p&gt;
-    &lt;p&gt;&mdash; Christopher Hitchens (Quote 6)&lt;/p&gt;
+  &lt;p&gt;&ldquo;Many religions now come before us with ingratiating smirks and outspread hands, like an unctuous merchant in a bazaar. They offer consolation and solidarity and uplift, competing as they do in a marketplace. But we have a right to remember how barbarically they behaved when they were strong and were making an offer that people could not refuse.&rdquo;&lt;/p&gt;
+  &lt;p&gt;&mdash; Christopher Hitchens (Quote 6)&lt;/p&gt;
   &lt;/blockquote&gt;
 &lt;/div&gt;&lt;!-- .quotes --&gt;</pre>
-                    </div><!-- .panel -->
+          </div><!-- .panel -->
 
-                    <div class="panel" id="panel-4">
-                        <pre>No specific styles are required for this plugin to work :)</pre>
-                    </div><!-- .panel -->
+          <div class="panel" id="panel-4">
+            <pre>No specific styles are required for this plugin to work :)</pre>
+          </div><!-- .panel -->
 
-                </div><!-- .panels -->
+        </div><!-- .panels -->
 
-            </div><!-- .demo -->
+      </div><!-- .demo -->
+      
+      <div class="sep"><span class="left-arrow arrow"></span><span class="right-arrow arrow"></span></div>
+      
+      <div class="demo" id="demo-two">
+        <div class="description">
+          <h2>Example Two</h2>
+          <p>In this example, we are taking advantage of some of the available options. We've turned off the auto rotating feature and enabled all of the navigation features. We also changed the speed of the animation and which elements are being targeted since we aren't wanting to rotate the direct children of the selected object (view the HTML tab for more details).</p>
+        </div><!-- .description -->
+
+        <nav class="subnav tabs">
+          <ul>
+            <li class="active"><a href="#panel-5">Demo</a></li>
+            <li><a href="#panel-6">JavaScript</a></li>
+            <li><a href="#panel-7">HTML</a></li>
+            <li><a href="#panel-8">CSS</a></li>
+          </ul>
+        </nav>
+        <div class="panels">
+          <div class="panel" id="panel-5">
             
-            <div class="sep"><span class="left-arrow arrow"></span><span class="right-arrow arrow"></span></div>
+            <div class="quotes">
+              <ul>
+                <li>
+                  <blockquote>
+                    <p>&ldquo;That which can be asserted without evidence, can be dismissed without evidence.&rdquo;</p>
+                    <p>&mdash; Christopher Hitchens (Quote 1)</p>
+                  </blockquote>
+                </li>
+                
+                <li>
+                  <blockquote>
+                    <p>&ldquo;Owners of dogs will have noticed that, if you provide them with food and water and shelter and affection, they will think you are god. Whereas owners of cats are compelled to realize that, if you provide them with food and water and shelter and affection, they draw the conclusion that they are gods.&rdquo;</p>
+                    <p>&mdash; Christopher Hitchens (Quote 2)</p>
+                  </blockquote>
+                </li>
+                
+                <li>
+                  <blockquote>
+                    <p>&ldquo;Everybody does have a book in them, but in most cases that's where it should stay.&rdquo;</p>
+                    <p>&mdash; Christopher Hitchens (Quote 3)</p>
+                  </blockquote>
+                </li>
+                
+                <li>
+                  <blockquote>
+                    <p>&ldquo;Beware the irrational, however seductive. Shun the 'transcendent' and all who invite you to subordinate or annihilate yourself. Distrust compassion; prefer dignity for yourself and others. Don't be afraid to be thought arrogant or selfish. Picture all experts as if they were mammals. Never be a spectator of unfairness or stupidity. Seek out argument and disputation for their own sake; the grave will supply plenty of time for silence. Suspect your own motives, and all excuses. Do not live for others any more than you would expect others to live for you.&rdquo;</p>
+                    <p>&mdash; Christopher Hitchens (Quote 4)</p>
+                  </blockquote>
+                </li>
+                
+                <li>
+                  <blockquote>
+                  <p>&ldquo;Human decency is not derived from religion. It precedes it.&rdquo;</p>
+                  <p>&mdash; Christopher Hitchens (Quote 5)</p>
+                  </blockquote>
+                </li>
+                
+                <li>
+                  <blockquote>
+                    <p>&ldquo;Many religions now come before us with ingratiating smirks and outspread hands, like an unctuous merchant in a bazaar. They offer consolation and solidarity and uplift, competing as they do in a marketplace. But we have a right to remember how barbarically they behaved when they were strong and were making an offer that people could not refuse.&rdquo;</p>
+                    <p>&mdash; Christopher Hitchens (Quote 6)</p>
+                  </blockquote>
+                </li>
+              </ul>
+            </div><!-- .quotes -->
             
-            <div class="demo" id="demo-two">
-                <div class="description">
-                    <h2>Example Two</h2>
-                    <p>In this example, we are taking advantage of some of the available options. We've turned off the auto rotating feature and enabled all of the navigation features. We also changed the speed of the animation and which elements are being targeted since we aren't wanting to rotate the direct children of the selected object (view the HTML tab for more details).</p>
-                </div><!-- .description -->
+          </div><!-- .panel -->
 
-                <nav class="subnav tabs">
-                    <ul>
-                        <li class="active"><a href="#panel-5">Demo</a></li>
-                        <li><a href="#panel-6">JavaScript</a></li>
-                        <li><a href="#panel-7">HTML</a></li>
-                        <li><a href="#panel-8">CSS</a></li>
-                    </ul>
-                </nav>
-                <div class="panels">
-                    <div class="panel" id="panel-5">
-                        
-                        <div class="quotes">
-                            <ul>
-                                <li>
-                                    <blockquote>
-                                        <p>&ldquo;That which can be asserted without evidence, can be dismissed without evidence.&rdquo;</p>
-                                        <p>&mdash; Christopher Hitchens (Quote 1)</p>
-                                    </blockquote>
-                                </li>
-                                
-                                <li>
-                                    <blockquote>
-                                        <p>&ldquo;Owners of dogs will have noticed that, if you provide them with food and water and shelter and affection, they will think you are god. Whereas owners of cats are compelled to realize that, if you provide them with food and water and shelter and affection, they draw the conclusion that they are gods.&rdquo;</p>
-                                        <p>&mdash; Christopher Hitchens (Quote 2)</p>
-                                    </blockquote>
-                                </li>
-                                
-                                <li>
-                                    <blockquote>
-                                        <p>&ldquo;Everybody does have a book in them, but in most cases that's where it should stay.&rdquo;</p>
-                                        <p>&mdash; Christopher Hitchens (Quote 3)</p>
-                                    </blockquote>
-                                </li>
-                                
-                                <li>
-                                    <blockquote>
-                                        <p>&ldquo;Beware the irrational, however seductive. Shun the 'transcendent' and all who invite you to subordinate or annihilate yourself. Distrust compassion; prefer dignity for yourself and others. Don't be afraid to be thought arrogant or selfish. Picture all experts as if they were mammals. Never be a spectator of unfairness or stupidity. Seek out argument and disputation for their own sake; the grave will supply plenty of time for silence. Suspect your own motives, and all excuses. Do not live for others any more than you would expect others to live for you.&rdquo;</p>
-                                        <p>&mdash; Christopher Hitchens (Quote 4)</p>
-                                    </blockquote>
-                                </li>
-                                
-                                <li>
-                                    <blockquote>
-                                    <p>&ldquo;Human decency is not derived from religion. It precedes it.&rdquo;</p>
-                                    <p>&mdash; Christopher Hitchens (Quote 5)</p>
-                                    </blockquote>
-                                </li>
-                                
-                                <li>
-                                    <blockquote>
-                                        <p>&ldquo;Many religions now come before us with ingratiating smirks and outspread hands, like an unctuous merchant in a bazaar. They offer consolation and solidarity and uplift, competing as they do in a marketplace. But we have a right to remember how barbarically they behaved when they were strong and were making an offer that people could not refuse.&rdquo;</p>
-                                        <p>&mdash; Christopher Hitchens (Quote 6)</p>
-                                    </blockquote>
-                                </li>
-                            </ul>
-                        </div><!-- .quotes -->
-                        
-                    </div><!-- .panel -->
-
-                    <div class="panel" id="panel-6">
+          <div class="panel" id="panel-6">
 <pre>// When document is ready...
 $(document).ready(function() {
   // Call Quovolver on the '.quotes' object
   $('#demo-two .quotes').quovolver({
-    children : 'li',
-    transitionSpeed : 600,
-    autoPlay : false,
-    equalHeight : false,
-    navPosition : 'above',
-    navPrev         : true,
-    navNext         : true,
-    navNum          : true,
-    navText         : true,
-    navTextContent : 'Quote @a of @b'
+  children : 'li',
+  transitionSpeed : 600,
+  autoPlay : false,
+  equalHeight : false,
+  navPosition : 'above',
+  navPrev     : true,
+  navNext     : true,
+  navNum      : true,
+  navText     : true,
+  navTextContent : 'Quote @a of @b'
   });
 });</pre>
-                    </div><!-- .panel -->
+          </div><!-- .panel -->
 
-                    <div class="panel" id="panel-7">
-                        <p>This is an example of when we are targeting an item who's elements we want to rotate are not it's direct children. In this case, they are list items in an unordered list. So we use the "child" property and give it a value of "li" (just like if we were targeting them with CSS).</p>
+          <div class="panel" id="panel-7">
+            <p>This is an example of when we are targeting an item who's elements we want to rotate are not it's direct children. In this case, they are list items in an unordered list. So we use the "child" property and give it a value of "li" (just like if we were targeting them with CSS).</p>
 <pre>&lt;div class=&quot;quotes&quot;&gt;
   &lt;ul&gt;
-    &lt;li&gt;
-      &lt;blockquote&gt;
-        &lt;p&gt;&ldquo;That which can be asserted without evidence, can be dismissed without evidence.&rdquo;&lt;/p&gt;
-        &lt;p&gt;&mdash; Christopher Hitchens (Quote 1)&lt;/p&gt;
-      &lt;/blockquote&gt;
-    &lt;/li&gt;
+  &lt;li&gt;
+    &lt;blockquote&gt;
+    &lt;p&gt;&ldquo;That which can be asserted without evidence, can be dismissed without evidence.&rdquo;&lt;/p&gt;
+    &lt;p&gt;&mdash; Christopher Hitchens (Quote 1)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
 
-    &lt;li&gt;
-      &lt;blockquote&gt;
-        &lt;p&gt;&ldquo;Owners of dogs will have noticed that, if you provide them with food and water and shelter and affection, they will think you are god. Whereas owners of cats are compelled to realize that, if you provide them with food and water and shelter and affection, they draw the conclusion that they are gods.&rdquo;&lt;/p&gt;
-        &lt;p&gt;&mdash; Christopher Hitchens (Quote 2)&lt;/p&gt;
-      &lt;/blockquote&gt;
-    &lt;/li&gt;
+  &lt;li&gt;
+    &lt;blockquote&gt;
+    &lt;p&gt;&ldquo;Owners of dogs will have noticed that, if you provide them with food and water and shelter and affection, they will think you are god. Whereas owners of cats are compelled to realize that, if you provide them with food and water and shelter and affection, they draw the conclusion that they are gods.&rdquo;&lt;/p&gt;
+    &lt;p&gt;&mdash; Christopher Hitchens (Quote 2)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
 
-    &lt;li&gt;
-      &lt;blockquote&gt;
-        &lt;p&gt;&ldquo;Everybody does have a book in them, but in most cases that's where it should stay.&rdquo;&lt;/p&gt;
-        &lt;p&gt;&mdash; Christopher Hitchens (Quote 3)&lt;/p&gt;
-      &lt;/blockquote&gt;
-    &lt;/li&gt;
+  &lt;li&gt;
+    &lt;blockquote&gt;
+    &lt;p&gt;&ldquo;Everybody does have a book in them, but in most cases that's where it should stay.&rdquo;&lt;/p&gt;
+    &lt;p&gt;&mdash; Christopher Hitchens (Quote 3)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
 
-    &lt;li&gt;
-      &lt;blockquote&gt;
-        &lt;p&gt;&ldquo;Beware the irrational, however seductive. Shun the 'transcendent' and all who invite you to subordinate or annihilate yourself. Distrust compassion; prefer dignity for yourself and others. Don't be afraid to be thought arrogant or selfish. Picture all experts as if they were mammals. Never be a spectator of unfairness or stupidity. Seek out argument and disputation for their own sake; the grave will supply plenty of time for silence. Suspect your own motives, and all excuses. Do not live for others any more than you would expect others to live for you.&rdquo;&lt;/p&gt;
-        &lt;p&gt;&mdash; Christopher Hitchens (Quote 4)&lt;/p&gt;
-      &lt;/blockquote&gt;
-    &lt;/li&gt;
+  &lt;li&gt;
+    &lt;blockquote&gt;
+    &lt;p&gt;&ldquo;Beware the irrational, however seductive. Shun the 'transcendent' and all who invite you to subordinate or annihilate yourself. Distrust compassion; prefer dignity for yourself and others. Don't be afraid to be thought arrogant or selfish. Picture all experts as if they were mammals. Never be a spectator of unfairness or stupidity. Seek out argument and disputation for their own sake; the grave will supply plenty of time for silence. Suspect your own motives, and all excuses. Do not live for others any more than you would expect others to live for you.&rdquo;&lt;/p&gt;
+    &lt;p&gt;&mdash; Christopher Hitchens (Quote 4)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
 
-    &lt;li&gt;
-      &lt;blockquote&gt;
-      &lt;p&gt;&ldquo;Human decency is not derived from religion. It precedes it.&rdquo;&lt;/p&gt;
-      &lt;p&gt;&mdash; Christopher Hitchens (Quote 5)&lt;/p&gt;
-      &lt;/blockquote&gt;
-    &lt;/li&gt;
+  &lt;li&gt;
+    &lt;blockquote&gt;
+    &lt;p&gt;&ldquo;Human decency is not derived from religion. It precedes it.&rdquo;&lt;/p&gt;
+    &lt;p&gt;&mdash; Christopher Hitchens (Quote 5)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
 
-    &lt;li&gt;
-      &lt;blockquote&gt;
-        &lt;p&gt;&ldquo;Many religions now come before us with ingratiating smirks and outspread hands, like an unctuous merchant in a bazaar. They offer consolation and solidarity and uplift, competing as they do in a marketplace. But we have a right to remember how barbarically they behaved when they were strong and were making an offer that people could not refuse.&rdquo;&lt;/p&gt;
-        &lt;p&gt;&mdash; Christopher Hitchens (Quote 6)&lt;/p&gt;
-      &lt;/blockquote&gt;
-    &lt;/li&gt;
+  &lt;li&gt;
+    &lt;blockquote&gt;
+    &lt;p&gt;&ldquo;Many religions now come before us with ingratiating smirks and outspread hands, like an unctuous merchant in a bazaar. They offer consolation and solidarity and uplift, competing as they do in a marketplace. But we have a right to remember how barbarically they behaved when they were strong and were making an offer that people could not refuse.&rdquo;&lt;/p&gt;
+    &lt;p&gt;&mdash; Christopher Hitchens (Quote 6)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;&lt;!-- .quotes --&gt;</pre>
-                    </div><!-- .panel -->
+          </div><!-- .panel -->
 
-                    <div class="panel" id="panel-8">
-                        <p>These styles are not required for the plugin to work. They are only to demonstrate how you could style the navigation that is generated by Quovolver.</p>
+          <div class="panel" id="panel-8">
+            <p>These styles are not required for the plugin to work. They are only to demonstrate how you could style the navigation that is generated by Quovolver.</p>
 <pre>/**
  * General Navigation Styles
  */
@@ -458,152 +458,151 @@ $(document).ready(function() {
   margin-left: 30px;
   color: #aaa;
 }</pre>
-                    </div><!-- .panel -->
+          </div><!-- .panel -->
 
-                </div><!-- .panels -->
+        </div><!-- .panels -->
 
-            </div><!-- .demo -->
-            
-            <div class="sep"><span class="left-arrow arrow"></span><span class="right-arrow arrow"></span></div>
-            
-            <div class="options">
-                <div class="description">
-                    <h2>Available Options</h2>
-                    <p>You can pass options as key/value object to the quovolver() function or modify them at the bottom of jquery.quovolver.js file.</p>
-                </div><!-- .description -->
-                
-                <div class="table-wrap">
-                    <table width="100%" class="options-table" cellpadding="0" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th width="20%">Key</th>
-                                <th width="18%">Default value</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>children</td>
-                                <td>null</td>
-                                <td>If selector is provided, we will use the find method to get the group of items, otherwise we'll grab the children of the selected element.</td>
-                            </tr>
-                            <tr>
-                                <td>transition</td>
-                                <td>'fade'</td>
-                                <td>The style of the transition. Currently there are only two available options, fade and basic. More transitions will be added in the future or you can create your own by passing in your own function name. A JSON object will be passed to your function to work with.</td>
-                            </tr>
-                            <tr>
-                                <td>transitionSpeed</td>
-                                <td>300</td>
-                                <td>This is the speed that each animation will take, not the entire transition. There may be multiple animations in any given transition but each animation will run at this set speed.</td>
-                            </tr>
-                            <tr>
-                                <td>autoPlay</td>
-                                <td>true</td>
-                                <td>Toggle auto rotate.</td>
-                            </tr>
-                            <tr>
-                                <td>autoPlaySpeed</td>
-                                <td>6000</td>
-                                <td>Duration before each transition. Time is in mili-seconds so 6000 ends up being 6 seconds.</td>
-                            </tr>
-                            <tr>
-                                <td>pauseOnHover</td>
-                                <td>true</td>
-                                <td>Whether the auto play feature should pause when the object is hovered over. Auto rotate would resume when hovered off.</td>
-                            </tr>
-                            <tr>
-                                <td>stopOnHover</td>
-                                <td>false</td>
-                                <td>Whether the auto play feature should stop when the object is hovered over.</td>
-                            </tr>
-                            <tr>
-                                <td>equalHeight</td>
-                                <td>true</td>
-                                <td>Whether every item should have equal heights.</td>
-                            </tr>
-                            <tr>
-                                <td>navPosition</td>
-                                <td>'above'</td>
-                                <td>Where the enabled navigation elements will be output. Can be set to 'above', 'below', 'both' or 'custom' (must provide custom selector for placement).</td>
-                            </tr>
-                            <tr>
-                                <td>navPositionCustom</td>
-                                <td>null</td>
-                                <td>The selector of the custom element where the enabled navigation elements will be output.</td>
-                            </tr>
-                            <tr>
-                                <td>navPrev</td>
-                                <td>false</td>
-                                <td>Toggle the "previous" button.</td>
-                            </tr>
-                            <tr>
-                                <td>navNext</td>
-                                <td>false</td>
-                                <td>Toggle the "next" button.</td>
-                            </tr>
-                            <tr>
-                                <td>navNum</td>
-                                <td>false</td>
-                                <td>Toggle numbered navigation. This outputs a "1, 2, 3, 4..." that links to their corresponding element.</td>
-                            </tr>
-                            <tr>
-                                <td>navText</td>
-                                <td>false</td>
-                                <td>Toggle navigation description (e.g. display current item # and total item #).</td>
-                            </tr>
-                            <tr>
-                                <td>navPrevText</td>
-                                <td>'Prev'</td>
-                                <td>Text for the "previous" button.</td>
-                            </tr>
-                            <tr>
-                                <td>navNextText</td>
-                                <td>'Next'</td>
-                                <td>Text for the "next" button.</td>
-                            </tr>
-                            <tr>
-                                <td>navTextContent</td>
-                                <td>'@a / @b'</td>
-                                <td>The text that will display for the navigation description. '@a' will be replaced with current item number and '@b' with total number.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div><!-- .table-wrap -->
-            </div><!-- .options -->
-            
-            <div class="options">
-                <div class="description">
-                    <h2>Public Methods</h2>
-                    <p>Quovolver's functions that you can play with. More coming soon.</p>
-                </div><!-- .description -->
-                
-                <div class="table-wrap">
-                    <table width="100%" class="options-table" cellpadding="0" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th width="20%">Method</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>$('elementWeCalledQuovolverOn').trigger('goto', itemNumber);</td>
-                                <td>A public interface to move to transition to a specific item.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div><!-- .table-wrap -->
-            </div><!-- .options -->
-            
-        </div><!-- .page -->
+      </div><!-- .demo -->
+      
+      <div class="sep"><span class="left-arrow arrow"></span><span class="right-arrow arrow"></span></div>
+      
+      <div class="options">
+        <div class="description">
+          <h2>Available Options</h2>
+          <p>You can pass options as key/value object to the quovolver() function or modify them at the bottom of jquery.quovolver.js file.</p>
+        </div><!-- .description -->
         
-        <footer class="footer">
-            <p><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">Quovolver</span> is built and maintained by <a xmlns:cc="http://creativecommons.org/ns#" href="http://sebnitu.com" property="cc:attributionName" rel="cc:attributionURL">Sebastian Nitu</a> and is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>. Follow me on <a href="https://twitter.com/sebnitu">Twitter</a>, <a href="https://github.com/sebnitu">GitHub</a> and <a href="http://dribbble.com/sebnitu">Dribbble</a>.</p>
-            <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a></p>
-        </footer>
+        <div class="table-wrap">
+          <table width="100%" class="options-table" cellpadding="0" cellspacing="0">
+            <thead>
+              <tr>
+                <th width="20%">Key</th>
+                <th width="18%">Default value</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>children</td>
+                <td>null</td>
+                <td>If selector is provided, we will use the find method to get the group of items, otherwise we'll grab the children of the selected element.</td>
+              </tr>
+              <tr>
+                <td>transition</td>
+                <td>'fade'</td>
+                <td>The style of the transition. Currently there are only two available options, fade and basic. More transitions will be added in the future or you can create your own by passing in your own function name. A JSON object will be passed to your function to work with.</td>
+              </tr>
+              <tr>
+                <td>transitionSpeed</td>
+                <td>300</td>
+                <td>This is the speed that each animation will take, not the entire transition. There may be multiple animations in any given transition but each animation will run at this set speed.</td>
+              </tr>
+              <tr>
+                <td>autoPlay</td>
+                <td>true</td>
+                <td>Toggle auto rotate.</td>
+              </tr>
+              <tr>
+                <td>autoPlaySpeed</td>
+                <td>6000</td>
+                <td>Duration before each transition. Time is in mili-seconds so 6000 ends up being 6 seconds.</td>
+              </tr>
+              <tr>
+                <td>pauseOnHover</td>
+                <td>true</td>
+                <td>Whether the auto play feature should pause when the object is hovered over. Auto rotate would resume when hovered off.</td>
+              </tr>
+              <tr>
+                <td>stopOnHover</td>
+                <td>false</td>
+                <td>Whether the auto play feature should stop when the object is hovered over.</td>
+              </tr>
+              <tr>
+                <td>equalHeight</td>
+                <td>true</td>
+                <td>Whether every item should have equal heights.</td>
+              </tr>
+              <tr>
+                <td>navPosition</td>
+                <td>'above'</td>
+                <td>Where the enabled navigation elements will be output. Can be set to 'above', 'below', 'both' or 'custom' (must provide custom selector for placement).</td>
+              </tr>
+              <tr>
+                <td>navPositionCustom</td>
+                <td>null</td>
+                <td>The selector of the custom element where the enabled navigation elements will be output.</td>
+              </tr>
+              <tr>
+                <td>navPrev</td>
+                <td>false</td>
+                <td>Toggle the "previous" button.</td>
+              </tr>
+              <tr>
+                <td>navNext</td>
+                <td>false</td>
+                <td>Toggle the "next" button.</td>
+              </tr>
+              <tr>
+                <td>navNum</td>
+                <td>false</td>
+                <td>Toggle numbered navigation. This outputs a "1, 2, 3, 4..." that links to their corresponding element.</td>
+              </tr>
+              <tr>
+                <td>navText</td>
+                <td>false</td>
+                <td>Toggle navigation description (e.g. display current item # and total item #).</td>
+              </tr>
+              <tr>
+                <td>navPrevText</td>
+                <td>'Prev'</td>
+                <td>Text for the "previous" button.</td>
+              </tr>
+              <tr>
+                <td>navNextText</td>
+                <td>'Next'</td>
+                <td>Text for the "next" button.</td>
+              </tr>
+              <tr>
+                <td>navTextContent</td>
+                <td>'@a / @b'</td>
+                <td>The text that will display for the navigation description. '@a' will be replaced with current item number and '@b' with total number.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- .table-wrap -->
+      </div><!-- .options -->
+      
+      <div class="options">
+        <div class="description">
+          <h2>Public Methods</h2>
+          <p>Quovolver's functions that you can play with. More coming soon.</p>
+        </div><!-- .description -->
         
-    </div><!-- .wrapper -->
+        <div class="table-wrap">
+          <table width="100%" class="options-table" cellpadding="0" cellspacing="0">
+            <thead>
+              <tr>
+                <th width="20%">Method</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>$('elementWeCalledQuovolverOn').trigger('goto', itemNumber);</td>
+                <td>A public interface to move to transition to a specific item.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- .table-wrap -->
+      </div><!-- .options -->
+      
+    </div><!-- .page -->
+    
+    <footer class="footer">
+      <p>Quovolver is built and maintained by <a href="http://sebnitu.com">Sebastian Nitu</a> and is licensed under the MIT License (MIT). Follow me on <a href="https://twitter.com/sebnitu">Twitter</a>, <a href="https://github.com/sebnitu">GitHub</a> and <a href="http://dribbble.com/sebnitu">Dribbble</a>.</p>
+    </footer>
+    
+  </div><!-- .wrapper -->
 
 </body>
 </html>
