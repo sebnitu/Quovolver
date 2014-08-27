@@ -273,6 +273,10 @@
         groupMethod = 'children';
       }
 
+      if ( o.random) {
+        $this[groupMethod](o.children).quovolverRandom();
+      }
+
       // Initialize element specific variables
       var $box = $this.parent('.quovolve-box'),
         $items = $this[groupMethod](o.children),
@@ -303,7 +307,7 @@
       // Auto play interface
       if (o.autoPlay) {
           if (o.autoPlaySpeed == 'auto') {
-  								// get and store # of chars in each quote
+								// get and store # of chars in each quote
 	        $items.each(function() {
 	          this.textLength = $(this).text().length;
 	        });
@@ -341,6 +345,15 @@
     }); // @end of return this.each()
 
   };
+
+  $.fn.quovolverRandom = function(selector) {
+    (selector ? this.find(selector) : this).parent().each(function(){
+      $(this).children(selector).sort(function(){
+        return Math.random() - 0.5;
+      }).detach().appendTo(this);
+    });
+    return this;
+  };
   
   $.fn.quovolver.defaults = {
 
@@ -362,6 +375,8 @@
     navNext : false, // Toggle "next" button
     navNum : false, // Toggle numbered navigation
     navText : false, // Toggle navigation description (e.g. display current item # and total item #)
+
+    random : true, // Randomize the items on each page load
 
     navPrevText : 'Prev', // Text for the "previous" button
     navNextText : 'Next', // Text for the "next" button
