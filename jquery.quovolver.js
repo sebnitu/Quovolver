@@ -376,7 +376,7 @@
     navNum : false, // Toggle numbered navigation
     navText : false, // Toggle navigation description (e.g. display current item # and total item #)
 
-    random : true, // Randomize the items on each page load
+    random : false, // Randomize the items on each page load
 
     navPrevText : 'Prev', // Text for the "previous" button
     navNextText : 'Next', // Text for the "next" button
